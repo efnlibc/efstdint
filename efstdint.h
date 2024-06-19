@@ -71,12 +71,12 @@
 #define EFINT_FAST8 efint16_t
 #endif
 
+
 #ifdef __INT8_TYPE__
 #define EFINT8 __INT8_TYPE__
 #define EFINT_LEAST8 efint8_t
 #define EFINT_FAST8 efint8_t
 #endif
-
 
 #ifdef __UINT64_TYPE__
 #define EFUINT64 __UINT64_TYPE__
@@ -130,6 +130,60 @@
 #define EFUINT8 __UINT8_TYPE__
 #define EFUINT_LEAST8 efuint8_t
 #endif
+
+#ifdef __INTPTR_TYPE__
+#define EFINTPTR __INTPTR_TYPE__
+#endif
+
+#ifdef __UINTPTR_TYPE__
+#define EFUINTPTR __UINTPTR_TYPE__
+#endif
+
+#ifdef __INTMAX_TYPE__
+#define EFINTMAX __INTMAX_TYPE__
+#endif
+
+#ifdef __UINTMAX_TYPE__
+#define EFUINTMAX __UINTMAX_TYPE__
+#endif
+
+#ifdef __INT64_C_SUFFIX__
+#define EFINT64_C_SUFFIX __INT64_C_SUFFIX__
+#endif
+
+#ifdef __INT56_C_SUFFIX__
+#define EFINT56_C_SUFFIX __INT56_C_SUFFIX__
+#endif
+
+#ifdef __INT48_C_SUFFIX__
+#define EFINT48_C_SUFFIX __INT48_C_SUFFIX__
+#endif
+
+#ifdef __INT40_C_SUFFIX__
+#define EFINT40_C_SUFFIX __INT40_C_SUFFIX__
+#endif
+
+#ifdef __INT32_C_SUFFIX__
+#define EFINT32_C_SUFFIX __INT32_C_SUFFIX__
+#endif
+
+#ifdef __INT24_C_SUFFIX__
+#define EFINT24_C_SUFFIX __INT24_C_SUFFIX__
+#endif
+
+#ifdef __INT16_C_SUFFIX__
+#define EFINT16_C_SUFFIX __INT16_C_SUFFIX__
+#endif
+
+#ifdef __INT8_C_SUFFIX__
+#define EFINT8_C_SUFFIX __INT8_C_SUFFIX__
+#endif
+
+/* >>generic */
+
+#define EFINT_C_JOIN(a, b) a ## b
+#define EFINT_C(value, suffix) EFINT_C_JOIN(value, suffix)
+#define EFUINT_C(value, suffix) EFINT_C_JOIN(EFINT_C_JOIN(value, U), suffix)
 
 /* >>int */
 
@@ -201,196 +255,196 @@ typedef EFUINT8 efuint8_t;
 
 /* >>int_least */
 
-#ifdef EFINT64_LEAST
-typedef EFINT64_LEAST efint_least64_t;
+#ifdef EFINT_LEAST64
+typedef EFINT_LEAST64 efint_least64_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFINT56_LEAST
-typedef EFINT56_LEAST efint_least56_t;
+#ifdef EFINT_LEAST56
+typedef EFINT_LEAST56 efint_least56_t;
 #endif
 
-#ifdef EFINT48_LEAST
-typedef EFINT48_LEAST efint_least48_t;
+#ifdef EFINT_LEAST48
+typedef EFINT_LEAST48 efint_least48_t;
 #endif
 
-#ifdef EFINT40_LEAST
-typedef EFINT40_LEAST efint_least40_t;
+#ifdef EFINT_LEAST40
+typedef EFINT_LEAST40 efint_least40_t;
 #endif
 
-#ifdef EFINT32_LEAST
-typedef EFINT32_LEAST efint_least32_t;
+#ifdef EFINT_LEAST32
+typedef EFINT_LEAST32 efint_least32_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFINT24_LEAST
-typedef EFINT24_LEAST efint_least24_t;
+#ifdef EFINT_LEAST24
+typedef EFINT_LEAST24 efint_least24_t;
 #endif
 
-#ifdef EFINT16_LEAST
-typedef EFINT16_LEAST efint_least16_t;
+#ifdef EFINT_LEAST16
+typedef EFINT_LEAST16 efint_least16_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFINT8_LEAST
-typedef EFINT8_LEAST efint_least8_t;
+#ifdef EFINT_LEAST8
+typedef EFINT_LEAST8 efint_least8_t;
 #else
 #error "required"
 #endif
 
 /* >>uint_least */
 
-#ifdef EFUINT64_LEAST
-typedef EFUINT64_LEAST efuint_least64_t;
+#ifdef EFUINT_LEAST64
+typedef EFUINT_LEAST64 efuint_least64_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFUINT56_LEAST
-typedef EFUINT56_LEAST efuint_least56_t;
+#ifdef EFUINT_LEAST56
+typedef EFUINT_LEAST56 efuint_least56_t;
 #endif
 
-#ifdef EFUINT48_LEAST
-typedef EFUINT48_LEAST efuint_least48_t;
+#ifdef EFUINT_LEAST48
+typedef EFUINT_LEAST48 efuint_least48_t;
 #endif
 
-#ifdef EFUINT40_LEAST
-typedef EFUINT40_LEAST efuint_least40_t;
+#ifdef EFUINT_LEAST40
+typedef EFUINT_LEAST40 efuint_least40_t;
 #endif
 
-#ifdef EFUINT32_LEAST
-typedef EFUINT32_LEAST efuint_least32_t;
+#ifdef EFUINT_LEAST32
+typedef EFUINT_LEAST32 efuint_least32_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFUINT24_LEAST
-typedef EFUINT24_LEAST efuint_least24_t;
+#ifdef EFUINT_LEAST24
+typedef EFUINT_LEAST24 efuint_least24_t;
 #endif
 
-#ifdef EFUINT16_LEAST
-typedef EFUINT16_LEAST efuint_least16_t;
+#ifdef EFUINT_LEAST16
+typedef EFUINT_LEAST16 efuint_least16_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFUINT8_LEAST
-typedef EFUINT8_LEAST efuint_least8_t;
+#ifdef EFUINT_LEAST8
+typedef EFUINT_LEAST8 efuint_least8_t;
 #else
 #error "required"
 #endif
 
 /* >>int_fast */
 
-#ifdef EFINT64_FAST
-typedef EFINT64_FAST efint_fast64_t;
+#ifdef EFINT_FAST64
+typedef EFINT_FAST64 efint_fast64_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFINT56_FAST
-typedef EFINT56_FAST efint_fast56_t;
+#ifdef EFINT_FAST56
+typedef EFINT_FAST56 efint_fast56_t;
 #endif
 
-#ifdef EFINT48_FAST
-typedef EFINT48_FAST efint_fast48_t;
+#ifdef EFINT_FAST48
+typedef EFINT_FAST48 efint_fast48_t;
 #endif
 
-#ifdef EFINT40_FAST
-typedef EFINT40_FAST efint_fast40_t;
+#ifdef EFINT_FAST40
+typedef EFINT_FAST40 efint_fast40_t;
 #endif
 
-#ifdef EFINT32_FAST
-typedef EFINT32_FAST efint_fast32_t;
+#ifdef EFINT_FAST32
+typedef EFINT_FAST32 efint_fast32_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFINT24_FAST
-typedef EFINT24_FAST efint_fast24_t;
+#ifdef EFINT_FAST24
+typedef EFINT_FAST24 efint_fast24_t;
 #endif
 
-#ifdef EFINT16_FAST
-typedef EFINT16_FAST efint_fast16_t;
+#ifdef EFINT_FAST16
+typedef EFINT_FAST16 efint_fast16_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFINT8_FAST
-typedef EFINT8_FAST efint_fast8_t;
+#ifdef EFINT_FAST8
+typedef EFINT_FAST8 efint_fast8_t;
 #else
 #error "required"
 #endif
 
 /* >>uint_fast */
 
-#ifdef EFUINT64_FAST
-typedef EFUINT64_FAST efuint_fast64_t;
+#ifdef EFUINT_FAST64
+typedef EFUINT_FAST64 efuint_fast64_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFUINT56_FAST
-typedef EFUINT56_FAST efuint_fast56_t;
+#ifdef EFUINT_FAST56
+typedef EFUINT_FAST56 efuint_fast56_t;
 #endif
 
-#ifdef EFUINT48_FAST
-typedef EFUINT48_FAST efuint_fast48_t;
+#ifdef EFUINT_FAST48
+typedef EFUINT_FAST48 efuint_fast48_t;
 #endif
 
-#ifdef EFUINT40_FAST
-typedef EFUINT40_FAST efuint_fast40_t;
+#ifdef EFUINT_FAST40
+typedef EFUINT_FAST40 efuint_fast40_t;
 #endif
 
-#fdef EFUINT32_FAST
-typedef EFUINT32_FAST efuint_fast32_t;
+#fdef EFUINT_FAST32
+typedef EFUINT_FAST32 efuint_fast32_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFUINT24_FAST
-typedef EFUINT24_FAST efuint_fast24_t;
+#ifdef EFUINT_FAST24
+typedef EFUINT_FAST24 efuint_fast24_t;
 #endif
 
-#ifdef EFUINT16_FAST
-typedef EFUINT16_FAST efuint_fast16_t;
+#ifdef EFUINT_FAST16
+typedef EFUINT_FAST16 efuint_fast16_t;
 #else
 #error "required"
 #endif
 
-#ifdef EFUINT8_FAST
-typedef EFUINT8_FAST efuint_fast8_t;
+#ifdef EFUINT_FAST8
+typedef EFUINT_FAST8 efuint_fast8_t;
 #else
 #error "required"
 #endif
 
 /* >>intptr */
 
-#ifdef __INTPTR_TYPE__
-typedef __INTPTR_TYPE__ efintptr_t;
+#ifdef EFINTPTR
+typedef EFINTPTR efintptr_t;
 #endif
 
 /* >>uintptr */
 
-#ifdef __UINTPTR_TYPE__
-typedef __UINTPTR_TYPE__ efuintptr_t;
+#ifdef EFUINTPTR
+typedef EFUINTPTR efuintptr_t;
 #endif
 
 /* >>intmax */
 
-#ifdef __INTMAX_TYPE__
-typedef __INTMAX_TYPE__ efintmax_t;
+#ifdef EFINTMAX
+typedef EFINTMAX efintmax_t;
 #else
 #error "required"
 #endif
 
 /* >>uintmax */
 
-#ifdef __UINTMAX_TYPE__
-#define __UINTMAX_TYPE__ uintmax_t;
+#ifdef EFUINTMAX
+typedef EFUINTMAX uintmax_t;
 #else
 #error "required"
 #endif
@@ -518,15 +572,23 @@ typedef __INTMAX_TYPE__ efintmax_t;
 
 /* >>INT_C */
 
-#ifdef EFINT8
+#ifdef EFINT_LEAST8
 #ifdef EFINT8_C_SUFFIX
-#define EFINT8_C(value) value ## EFINT8_C_SUFFIX
+#define EFINT8_C(value) EFINT_C(value, EFINT8_C_SUFFIX)
 #else
 #define EFINT8_C(value) value
 #endif
 #endif
 
 /* >>UINT_C */
+
+#ifdef EFUINT_LEAST8
+#ifdef EFINT8_C_SUFFIX
+#define EFUINT8_C(value) EFUINT_C(value, EFINT8_C_SUFFIX)
+#else
+#define EFUINT8_C(value) value
+#endif
+#endif
 
 /* >>INTMAX_C */
 
