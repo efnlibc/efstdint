@@ -179,7 +179,7 @@
 #define EFINT8_C_SUFFIX __INT8_C_SUFFIX__
 #endif
 
-/* >>generic */
+/* >>setup */
 
 #define EFINT_C_JOIN(a, b) a ## b
 #define EFINT_C(value, suffix) EFINT_C_JOIN(value, suffix)
@@ -593,6 +593,9 @@ typedef EFUINTMAX uintmax_t;
 /* >>INTMAX_C */
 
 /* >>UINTMAX_C */
+
+/* >>shutdown */
+#undef EFEVERYTHING
 
 #endif
 
