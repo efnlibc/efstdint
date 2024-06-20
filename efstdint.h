@@ -1,601 +1,555 @@
-#ifndef EFSTDINT_H
-#define EFSTDINT_H
+/* Copyright 2024 Efgeen */
 
-/* >>clang */
+#ifndef _EFSTDINT_H
+#define _EFSTDINT_H
 
-#ifdef __INT64_TYPE__
-#define EFINT64 __INT64_TYPE__
-#define EFINT_LEAST64 efint64_t
-#define EFINT_LEAST32 efint64_t
-#define EFINT_LEAST16 efint64_t
-#define EFINT_LEAST8 efint64_t
-#define EFINT_FAST64 efint64_t
-#define EFINT_FAST32 efint64_t
-#define EFINT_FAST16 efint64_t
-#define EFINT_FAST8 efint64_t
-#endif
+#define _INT_C_JOIN(a, b) a ## b
+#define _INT_C(value, suffix) _INT_C_JOIN(value, suffix)
+#define _UINT_C(value, suffix) _INT_C_JOIN(value ## U, suffix)
 
-#ifdef __INT56_TYPE__
-#define EFINT56 __INT56_TYPE__
-#define EFINT_LEAST32 efint56_t
-#define EFINT_LEAST16 efint56_t
-#define EFINT_LEAST8 efint56_t
-#define EFINT_FAST32 efint56_t
-#define EFINT_FAST16 efint56_t
-#define EFINT_FAST8 efint56_t
-#endif
+/*****************************************/
+/* >>ISO/IEC 9899:1999 §7.18.1.1, ¶1, ¶3 */
+/*****************************************/
 
-#ifdef __INT48_TYPE__
-#define EFINT48 __INT48_TYPE__
-#define EFINT_LEAST32 efint48_t
-#define EFINT_LEAST16 efint48_t
-#define EFINT_LEAST8 efint48_t
-#define EFINT_FAST32 efint48_t
-#define EFINT_FAST16 efint48_t
-#define EFINT_FAST8 efint48_t
-#endif
+/* >>intN_t */
 
-#ifdef __INT40_TYPE__
-#define EFINT40 __INT40_TYPE__
-#define EFINT_LEAST32 efint40_t
-#define EFINT_LEAST16 efint40_t
-#define EFINT_LEAST8 efint40_t
-#define EFINT_FAST32 efint40_t
-#define EFINT_FAST16 efint40_t
-#define EFINT_FAST8 efint40_t
-#endif
-
-#ifdef __INT32_TYPE__
-#define EFINT32 __INT32_TYPE__
-#define EFINT_LEAST32 efint32_t
-#define EFINT_LEAST16 efint32_t
-#define EFINT_LEAST8 efint32_t
-#define EFINT_FAST32 efint32_t
-#define EFINT_FAST16 efint32_t
-#define EFINT_FAST8 efint32_t
-#endif
-
-#ifdef __INT24_TYPE__
-#define EFINT24 __INT24_TYPE__
-#define EFINT_LEAST16 efint24_t
-#define EFINT_LEAST8 efint24_t
-#define EFINT_FAST16 efint24_t
-#define EFINT_FAST8 efint24_t
+#ifdef __INT8_TYPE__
+typedef __INT8_TYPE__ int8_t;
 #endif
 
 #ifdef __INT16_TYPE__
-#define EFINT16 __INT16_TYPE__
-#define EFINT_LEAST16 efint16_t
-#define EFINT_LEAST8 efint16_t
-#define EFINT_FAST16 efint16_t
-#define EFINT_FAST8 efint16_t
+typedef __INT16_TYPE__ int64_t;
 #endif
 
-
-#ifdef __INT8_TYPE__
-#define EFINT8 __INT8_TYPE__
-#define EFINT_LEAST8 efint8_t
-#define EFINT_FAST8 efint8_t
+#ifdef __INT32_TYPE__
+typedef __INT32_TYPE__ int32_t;
 #endif
 
-#ifdef __UINT64_TYPE__
-#define EFUINT64 __UINT64_TYPE__
-#define EFUINT_LEAST64 efuint64_t
-#define EFUINT_LEAST32 efuint64_t
-#define EFUINT_LEAST16 efuint64_t
-#define EFUINT_LEAST8 efuint64_t
+#ifdef __INT64_TYPE__
+typedef __INT64_TYPE__ int64_t;
 #endif
 
-#ifdef __UINT56_TYPE__
-#define EFUINT56 __UINT56_TYPE__
-#define EFUINT_LEAST32 efuint56_t
-#define EFUINT_LEAST16 efuint56_t
-#define EFUINT_LEAST8 efuint56_t
-#endif
+/*****************************************/
+/* >>ISO/IEC 9899:1999 §7.18.1.1, ¶2, ¶3 */
+/*****************************************/
 
-#ifdef __UINT48_TYPE__
-#define EFUINT48 __UINT48_TYPE__
-#define EFUINT_LEAST32 efuint48_t
-#define EFUINT_LEAST16 efuint48_t
-#define EFUINT_LEAST8 efuint48_t
-#endif
+/* >>uintN_t */
 
-#ifdef __UINT40_TYPE__
-#define EFUINT40 __UINT40_TYPE__
-#define EFUINT_LEAST32 efuint40_t
-#define EFUINT_LEAST16 efuint40_t
-#define EFUINT_LEAST8 efuint40_t
-#endif
-
-#ifdef __UINT32_TYPE__
-#define EFUINT32 __UINT32_TYPE__
-#define EFUINT_LEAST32 efuint32_t
-#define EFUINT_LEAST16 efuint32_t
-#define EFUINT_LEAST8 efuint32_t
-#endif
-
-#ifdef __UINT24_TYPE__
-#define EFUINT24 __UINT24_TYPE__
-#define EFUINT_LEAST16 efuint24_t
-#define EFUINT_LEAST8 efuint24_t
+#ifdef __UINT8_TYPE__
+typedef __UINT8_TYPE__ uint8_t;
 #endif
 
 #ifdef __UINT16_TYPE__
-#define EFUINT16 __UINT16_TYPE__
-#define EFUINT_LEAST16 efuint16_t
-#define EFUINT_LEAST8 efuint16_t
+typedef __UINT16_TYPE__ uint16_t;
 #endif
+
+#ifdef __UINT32_TYPE__
+typedef __UINT32_TYPE__ uint32_t;
+#endif
+
+#ifdef __UINT64_TYPE__
+typedef __UINT64_TYPE__ uint64_t;
+#endif
+
+/*****************************************/
+/* >>ISO/IEC 9899:1999 §7.18.1.2, ¶1, ¶3 */
+/*****************************************/
+
+/* >>int_leastN_t */
 
 #ifdef __UINT8_TYPE__
-#define EFUINT8 __UINT8_TYPE__
-#define EFUINT_LEAST8 efuint8_t
+typedef __UINT8_TYPE__ int_least8_t;
+#elif defined __INT16_TYPE__
+typedef __INT16_TYPE__ int_least8_t;
+#elif defined __INT32_TYPE__
+typedef __INT32_TYPE__ int_least8_t;
+#elif defined __INT64_TYPE__
+typedef __INT64_TYPE__ int_least8_t;
+#else
+typedef signed char int_least8_t;
 #endif
+
+#ifdef __INT16_TYPE__
+typedef __INT16_TYPE__ int_least16_t;
+#elif defined __INT32_TYPE__
+typedef __INT32_TYPE__ int_least16_t;
+#elif defined __INT64_TYPE__
+typedef __INT64_TYPE__ int_least16_t;
+#else
+typedef short int_least16_t;
+#endif
+
+#ifdef __INT32_TYPE__
+typedef __INT32_TYPE__ int_least32_t;
+#elif defined __INT64_TYPE__
+typedef __INT64_TYPE__ int_least32_t;
+#else
+typedef long int_least32_t;
+#endif
+
+#ifdef __INT64_TYPE__
+typedef __INT64_TYPE__ int_least64_t;
+#else
+typedef long long int_least64_t;
+#endif
+
+/*****************************************/
+/* >>ISO/IEC 9899:1999 §7.18.1.2, ¶2, ¶3 */
+/*****************************************/
+
+/* >>uint_leastN_t */
+
+#ifdef __UINT8_TYPE__
+typedef __UINT8_TYPE__ uint_least8_t;
+#elif defined __UINT16_TYPE__
+typedef __UINT16_TYPE__ uint_least8_t;
+#elif defined __UINT32_TYPE__
+typedef __UINT32_TYPE__ uint_least8_t;
+#elif defined __UINT64_TYPE__
+typedef __UINT64_TYPE__ uint_least8_t;
+#else
+typedef unsigned char uint_least8_t;
+#endif
+
+#ifdef __UINT16_TYPE__
+typedef __UINT16_TYPE__ uint_least16_t;
+#elif defined __UINT32_TYPE__
+typedef __UINT32_TYPE__ uint_least16_t;
+#elif defined __UINT64_TYPE__
+typedef __UINT64_TYPE__ uint_least16_t;
+#else
+typedef unsigned short uint_least16_t;
+#endif
+
+#ifdef __UINT32_TYPE__
+typedef __UINT32_TYPE__ uint_least32_t;
+#elif defined __UINT64_TYPE__
+typedef __UINT64_TYPE__ uint_least32_t;
+#else
+typedef unsigned long uint_least32_t;
+#endif
+
+#ifdef __UINT64_TYPE__
+typedef __UINT64_TYPE__ uint_least64_t;
+#else
+typedef unsigned long long uint_least64_t;
+#endif
+
+/*****************************************/
+/* >>ISO/IEC 9899:1999 §7.18.1.3, ¶2, ¶3 */
+/*****************************************/
+
+/* >>int_leastN_t */
+
+typedef int_least8_t int_fast8_t;
+typedef int_least16_t int_fast16_t;
+typedef int_least32_t int_fast32_t;
+typedef int_least64_t int_fast64_t;
+
+/* >>uint_leastN_t */
+
+typedef uint_least8_t uint_fast8_t;
+typedef uint_least16_t uint_fast16_t;
+typedef uint_least32_t uint_fast32_t;
+typedef uint_least64_t uint_fast64_t;
+
+/*************************************/
+/* >>ISO/IEC 9899:1999 §7.18.1.4, ¶1 */
+/*************************************/
+
+/* >>intptr_t */
 
 #ifdef __INTPTR_TYPE__
-#define EFINTPTR __INTPTR_TYPE__
+typedef __INTPTR_TYPE__ intptr_t;
 #endif
+
+/* >>uintptr_t */
 
 #ifdef __UINTPTR_TYPE__
-#define EFUINTPTR __UINTPTR_TYPE__
+typedef __UINTPTR_TYPE__ uintptr_t;
 #endif
+
+/*************************************/
+/* >>ISO/IEC 9899:1999 §7.18.1.5, ¶1 */
+/*************************************/
+
+/* >>intmax_t */
 
 #ifdef __INTMAX_TYPE__
-#define EFINTMAX __INTMAX_TYPE__
+typedef __INTMAX_TYPE__ intmax_t;
+#else
+typedef int_least64_t intmax_t;
 #endif
+
+/* >>uintmax_t */
 
 #ifdef __UINTMAX_TYPE__
-#define EFUINTMAX __UINTMAX_TYPE__
+typedef __UINTMAX_TYPE__ uintmax_t;
+#else
+typedef int_least64_t uintmax_t;
 #endif
 
-#ifdef __INT64_C_SUFFIX__
-#define EFINT64_C_SUFFIX __INT64_C_SUFFIX__
-#endif
+/*************************************/
+/* >>ISO/IEC 9899:1999 §7.18.2.1, ¶1 */
+/*************************************/
 
-#ifdef __INT56_C_SUFFIX__
-#define EFINT56_C_SUFFIX __INT56_C_SUFFIX__
-#endif
+/* >>INTN_MIN */
 
-#ifdef __INT48_C_SUFFIX__
-#define EFINT48_C_SUFFIX __INT48_C_SUFFIX__
-#endif
-
-#ifdef __INT40_C_SUFFIX__
-#define EFINT40_C_SUFFIX __INT40_C_SUFFIX__
-#endif
-
-#ifdef __INT32_C_SUFFIX__
-#define EFINT32_C_SUFFIX __INT32_C_SUFFIX__
-#endif
-
-#ifdef __INT24_C_SUFFIX__
-#define EFINT24_C_SUFFIX __INT24_C_SUFFIX__
+#ifdef __INT8_C_SUFFIX__
+#define INT8_MIN _INT_C(-0x80, __INT8_C_SUFFIX__)
+#else
+#define INT8_MIN -0x80
 #endif
 
 #ifdef __INT16_C_SUFFIX__
-#define EFINT16_C_SUFFIX __INT16_C_SUFFIX__
+#define INT16_MIN _INT_C(-0x8000, __INT16_C_SUFFIX__)
+#else
+#define INT16_MIN -0x8000
 #endif
+
+#ifdef __INT32_C_SUFFIX__
+#define INT32_MIN _INT_C(-0x80000000, __INT32_C_SUFFIX__)
+#else
+#define INT32_MIN -0x80000000
+#endif
+
+#ifdef __INT64_C_SUFFIX__
+#define INT64_MIN _INT_C(-0x8000000000000000, __INT64_C_SUFFIX__)
+#else
+#define INT64_MIN -0x8000000000000000
+#endif
+
+/* >>INTN_MAX */
 
 #ifdef __INT8_C_SUFFIX__
-#define EFINT8_C_SUFFIX __INT8_C_SUFFIX__
-#endif
-
-/* >>setup */
-
-#define EFINT_C_JOIN(a, b) a ## b
-#define EFINT_C(value, suffix) EFINT_C_JOIN(value, suffix)
-#define EFUINT_C(value, suffix) EFINT_C_JOIN(EFINT_C_JOIN(value, U), suffix)
-
-/* >>int */
-
-#ifdef EFINT64
-typedef EFINT64 efint64_t;
-#endif
-
-#ifdef EFINT56
-typedef EFINT56 efint56_t;
-#endif
-
-#ifdef EFINT48
-typedef EFINT48 efint48_t;
-#endif
-
-#ifdef EFINT40
-typedef EFINT40 efint40_t;
-#endif
-
-#ifdef EFINT32
-typedef EFINT32 efint32_t;
-#endif
-
-#ifdef EFINT24
-typedef EFINT24 efint24_t;
-#endif
-
-#ifdef EFINT16
-typedef EFINT16 efint16_t;
-#endif
-
-#ifdef EFINT8
-typedef EFINT8 efint8_t;
-#endif
-
-/* >>uint */
-
-#ifdef EFUINT64
-typedef EFUINT64 efuint64_t;
-#endif
-
-#ifdef EFUINT56
-typedef EFUINT56 efuint56_t;
-#endif
-
-#ifdef EFUINT48
-typedef EFUINT48 efuint48_t;
-#endif
-
-#ifdef EFUINT40
-typedef EFUINT40 efuint40_t;
-#endif
-
-#ifdef EFUINT32
-typedef EFUINT32 efuint32_t;
-#endif
-
-#ifdef EFUINT24
-typedef EFUINT24 efuint24_t;
-#endif
-
-#ifdef EFUINT16
-typedef EFUINT16 efuint16_t;
-#endif
-
-#ifdef EFUINT8
-typedef EFUINT8 efuint8_t;
-#endif
-
-/* >>int_least */
-
-#ifdef EFINT_LEAST64
-typedef EFINT_LEAST64 efint_least64_t;
+#define INT8_MAX _INT_C(0x7F, __INT8_C_SUFFIX__)
 #else
-#error "required"
+#define INT8_MAX 0x7F
 #endif
 
-#ifdef EFINT_LEAST56
-typedef EFINT_LEAST56 efint_least56_t;
-#endif
-
-#ifdef EFINT_LEAST48
-typedef EFINT_LEAST48 efint_least48_t;
-#endif
-
-#ifdef EFINT_LEAST40
-typedef EFINT_LEAST40 efint_least40_t;
-#endif
-
-#ifdef EFINT_LEAST32
-typedef EFINT_LEAST32 efint_least32_t;
+#ifdef __INT16_C_SUFFIX__
+#define INT16_MAX _INT_C(0x7FFF, __INT16_C_SUFFIX__)
 #else
-#error "required"
+#define INT16_MAX 0x7FFF
 #endif
 
-#ifdef EFINT_LEAST24
-typedef EFINT_LEAST24 efint_least24_t;
-#endif
-
-#ifdef EFINT_LEAST16
-typedef EFINT_LEAST16 efint_least16_t;
+#ifdef __INT32_C_SUFFIX__
+#define INT32_MAX _INT_C(0x7FFFFFFF, __INT32_C_SUFFIX__)
 #else
-#error "required"
+#define INT32_MAX 0x7FFFFFFF
 #endif
 
-#ifdef EFINT_LEAST8
-typedef EFINT_LEAST8 efint_least8_t;
+#ifdef __INT64_C_SUFFIX__
+#define INT64_MAX _INT_C(0x7FFFFFFFFFFFFFFF, __INT64_C_SUFFIX__)
 #else
-#error "required"
+#define INT64_MAX 0x7FFFFFFFFFFFFFFF
 #endif
 
-/* >>uint_least */
+/* >>UINTN_MAX */
 
-#ifdef EFUINT_LEAST64
-typedef EFUINT_LEAST64 efuint_least64_t;
+#ifdef __UINT8_C_SUFFIX__
+#define UINT8_MAX _UINT_C(0xFF, __UINT8_C_SUFFIX__)
 #else
-#error "required"
+#define UINT8_MAX _INT_C_JOIN(0xFF, U)
 #endif
 
-#ifdef EFUINT_LEAST56
-typedef EFUINT_LEAST56 efuint_least56_t;
-#endif
-
-#ifdef EFUINT_LEAST48
-typedef EFUINT_LEAST48 efuint_least48_t;
-#endif
-
-#ifdef EFUINT_LEAST40
-typedef EFUINT_LEAST40 efuint_least40_t;
-#endif
-
-#ifdef EFUINT_LEAST32
-typedef EFUINT_LEAST32 efuint_least32_t;
+#ifdef __UINT16_C_SUFFIX__
+#define UINT16_MAX _UINT_C(0xFFFF, __UINT8_C_SUFFIX__)
 #else
-#error "required"
+#define UINT16_MAX _INT_C_JOIN(0xFFFF, U)
 #endif
 
-#ifdef EFUINT_LEAST24
-typedef EFUINT_LEAST24 efuint_least24_t;
-#endif
-
-#ifdef EFUINT_LEAST16
-typedef EFUINT_LEAST16 efuint_least16_t;
+#ifdef __UINT32_C_SUFFIX__
+#define UINT32_MAX _UINT_C(0xFFFFFFFF, __UINT8_C_SUFFIX__)
 #else
-#error "required"
+#define UINT32_MAX _INT_C_JOIN(0xFFFFFFFF, U)
 #endif
 
-#ifdef EFUINT_LEAST8
-typedef EFUINT_LEAST8 efuint_least8_t;
+#ifdef __UINT64_C_SUFFIX__
+#define UINT64_MAX _UINT_C(0xFFFFFFFFFFFFFFFF, __UINT8_C_SUFFIX__)
 #else
-#error "required"
+#define UINT64_MAX _INT_C_JOIN(0xFFFFFFFFFFFFFFFF, U)
 #endif
 
-/* >>int_fast */
+/*************************************/
+/* >>ISO/IEC 9899:1999 §7.18.2.2, ¶1 */
+/*************************************/
 
-#ifdef EFINT_FAST64
-typedef EFINT_FAST64 efint_fast64_t;
+/* >>INT_LEASTN_MIN */
+
+#ifdef __INT8_TYPE__
+#define INT_LEAST8_MIN INT8_MIN
+#elif defined __INT16_TYPE__
+#define INT_LEAST8_MIN INT16_MIN
+#elif defined __INT32_TYPE__
+#define INT_LEAST8_MIN INT32_MIN
+#elif defined __INT64_TYPE__
+#define INT_LEAST8_MIN INT64_MIN
 #else
-#error "required"
+#define INT_LEAST8_MIN -0x7F
 #endif
 
-#ifdef EFINT_FAST56
-typedef EFINT_FAST56 efint_fast56_t;
-#endif
-
-#ifdef EFINT_FAST48
-typedef EFINT_FAST48 efint_fast48_t;
-#endif
-
-#ifdef EFINT_FAST40
-typedef EFINT_FAST40 efint_fast40_t;
-#endif
-
-#ifdef EFINT_FAST32
-typedef EFINT_FAST32 efint_fast32_t;
+#ifdef __INT16_TYPE__
+#define INT_LEAST16_MIN INT16_MIN
+#elif defined __INT32_TYPE__
+#define INT_LEAST16_MIN INT32_MIN
+#elif defined __INT64_TYPE__
+#define INT_LEAST16_MIN INT64_MIN
 #else
-#error "required"
+#define INT_LEAST16_MIN -0x7FFF
 #endif
 
-#ifdef EFINT_FAST24
-typedef EFINT_FAST24 efint_fast24_t;
-#endif
-
-#ifdef EFINT_FAST16
-typedef EFINT_FAST16 efint_fast16_t;
+#ifdef __INT32_TYPE__
+#define INT_LEAST32_MIN INT32_MIN
+#elif defined __INT64_TYPE__
+#define INT_LEAST32_MIN INT64_MIN
 #else
-#error "required"
+#define INT_LEAST32_MIN -0x7FFFFFFF
 #endif
 
-#ifdef EFINT_FAST8
-typedef EFINT_FAST8 efint_fast8_t;
+#ifdef __INT64_TYPE__
+#define INT_LEAST64_MIN INT64_MIN
 #else
-#error "required"
+#define INT_LEAST64_MIN -0x7FFFFFFFFFFFFFFF
 #endif
 
-/* >>uint_fast */
+/* >>INT_LEASTN_MAX */
 
-#ifdef EFUINT_FAST64
-typedef EFUINT_FAST64 efuint_fast64_t;
+#ifdef __INT8_TYPE__
+#define INT_LEAST8_MAX INT8_MAX
+#elif defined __INT16_TYPE__
+#define INT_LEAST8_MAX INT16_MAX
+#elif defined __INT32_TYPE__
+#define INT_LEAST8_MAX INT32_MAX
+#elif defined __INT64_TYPE__
+#define INT_LEAST8_MAX INT64_MAX
 #else
-#error "required"
+#define INT_LEAST8_MAX INT8_MAX
 #endif
 
-#ifdef EFUINT_FAST56
-typedef EFUINT_FAST56 efuint_fast56_t;
-#endif
-
-#ifdef EFUINT_FAST48
-typedef EFUINT_FAST48 efuint_fast48_t;
-#endif
-
-#ifdef EFUINT_FAST40
-typedef EFUINT_FAST40 efuint_fast40_t;
-#endif
-
-#fdef EFUINT_FAST32
-typedef EFUINT_FAST32 efuint_fast32_t;
+#ifdef __INT16_TYPE__
+#define INT_LEAST16_MAX INT16_MAX
+#elif defined __INT32_TYPE__
+#define INT_LEAST16_MAX INT32_MAX
+#elif defined __INT64_TYPE__
+#define INT_LEAST16_MAX INT64_MAX
 #else
-#error "required"
+#define INT_LEAST16_MAX INT16_MAX
 #endif
 
-#ifdef EFUINT_FAST24
-typedef EFUINT_FAST24 efuint_fast24_t;
-#endif
-
-#ifdef EFUINT_FAST16
-typedef EFUINT_FAST16 efuint_fast16_t;
+#ifdef __INT32_TYPE__
+#define INT_LEAST32_MAX INT32_MAX
+#elif defined __INT64_TYPE__
+#define INT_LEAST32_MAX INT64_MAX
 #else
-#error "required"
+#define INT_LEAST32_MAX INT32_MAX
 #endif
 
-#ifdef EFUINT_FAST8
-typedef EFUINT_FAST8 efuint_fast8_t;
+#define INT_LEAST64_MAX INT64_MAX
+
+/* >>UINT_LEASTN_MAX */
+
+#ifdef __UINT8_TYPE__
+#define UINT_LEAST8_MAX UINT8_MAX
+#elif defined __UINT16_TYPE__
+#define UINT_LEAST8_MAX UINT16_MAX
+#elif defined __UINT32_TYPE__
+#define UINT_LEAST8_MAX UINT32_MAX
+#elif defined __UINT64_TYPE__
+#define UINT_LEAST8_MAX UINT64_MAX
 #else
-#error "required"
+#define UINT_LEAST8_MAX UINT8_MAX
 #endif
 
-/* >>intptr */
-
-#ifdef EFINTPTR
-typedef EFINTPTR efintptr_t;
-#endif
-
-/* >>uintptr */
-
-#ifdef EFUINTPTR
-typedef EFUINTPTR efuintptr_t;
-#endif
-
-/* >>intmax */
-
-#ifdef EFINTMAX
-typedef EFINTMAX efintmax_t;
+#ifdef __UINT16_TYPE__
+#define UINT_LEAST16_MAX UINT16_MAX
+#elif defined __UINT32_TYPE__
+#define UINT_LEAST16_MAX UINT32_MAX
+#elif defined __UINT64_TYPE__
+#define UINT_LEAST16_MAX UINT64_MAX
 #else
-#error "required"
+#define UINT_LEAST16_MAX UINT16_MAX
 #endif
 
-/* >>uintmax */
-
-#ifdef EFUINTMAX
-typedef EFUINTMAX uintmax_t;
+#ifdef __UINT32_TYPE__
+#define UINT_LEAST32_MAX UINT32_MAX
+#elif defined __UINT64_TYPE__
+#define UINT_LEAST32_MAX UINT64_MAX
 #else
-#error "required"
+#define UINT_LEAST32_MAX UINT32_MAX
 #endif
 
-/* >>INT_MIN */
+#define UINT_LEAST64_MAX UINT64_MAX
 
-#ifdef EFINT8
-#define EFINT8_MIN -0x80
-#endif
+/*************************************/
+/* >>ISO/IEC 9899:1999 §7.18.2.3, ¶1 */
+/*************************************/
 
-#ifdef EFINT16
-#define EFINT16_MIN -0x8000
-#endif
+/* >>INT_FASTN_MIN */
 
-#ifdef EFINT24
-#define EFINT24_MIN -0x800000
-#endif
+#define INT_FAST8_MIN INT_LEAST8_MIN
+#define INT_FAST16_MIN INT_LEAST16_MIN
+#define INT_FAST32_MIN INT_LEAST32_MIN
+#define INT_FAST64_MIN INT_LEAST64_MIN
 
-#ifdef EFINT32
-#define EFINT32_MIN -0x80000000
-#endif
+/* >>INT_FASTN_MAX */
 
-#ifdef EFINT40
-#define EFINT40_MIN -0x8000000000
-#endif
+#define INT_FAST8_MAX INT_LEAST8_MAX
+#define INT_FAST16_MAX INT_LEAST16_MAX
+#define INT_FAST32_MAX INT_LEAST32_MAX
+#define INT_FAST64_MAX INT_LEAST64_MAX
 
-#ifdef EFINT48
-#define EFINT48_MIN -0x800000000000
-#endif
+/* >>UINT_FASTN_MAX */
 
-#ifdef EFINT56
-#define EFINT56_MIN -0x80000000000000
-#endif
+#define UINT_FAST8_MAX UINT_LEAST8_MAX
+#define UINT_FAST16_MAX UINT_LEAST16_MAX
+#define UINT_FAST32_MAX UINT_LEAST32_MAX
+#define UINT_FAST64_MAX UINT_LEAST64_MAX
 
-#ifdef EFINT64
-#define EFINT64_MIN -0x8000000000000000
-#endif
-
-/* >>INT_MAX */
-
-/* todo: move into above or conditionalize */
-#define EFINT8_MAX 0x7F
-#define EFINT16_MAX 0x7FFF
-#define EFINT24_MAX 0x7FFFFF
-#define EFINT32_MAX 0x7FFFFFFF
-#define EFINT40_MAX 0x7FFFFFFFFF
-#define EFINT48_MAX 0x7FFFFFFFFFFF
-#define EFINT56_MAX 0x7FFFFFFFFFFFFF
-#define EFINT64_MAX 0x7FFFFFFFFFFFFFFF
-
-/* >>UINT_MAX */
-
-#ifdef EFUINT8
-#define EFUINT8_MAX 0xFF
-#endif
-
-#ifdef EFUINT16
-#define EFUINT16_MAX 0xFFFF
-#endif
-
-#ifdef EFUINT24
-#define EFUINT24_MAX 0xFFFFFF
-#endif
-
-#ifdef EFUINT32
-#define EFUINT32_MAX 0xFFFFFFFF
-#endif
-
-#ifdef EFUINT40
-#define EFUINT40_MAX 0xFFFFFFFFFF
-#endif
-
-#ifdef EFUINT48
-#define EFUINT48_MAX 0xFFFFFFFFFFFF
-#endif
-
-#ifdef EFUINT56
-#define EFUINT56_MAX 0xFFFFFFFFFFFFFF
-#endif
-
-#ifdef EFUINT64
-#define EFUINT64_MAX 0xFFFFFFFFFFFFFFFF
-#endif
-
-/* >>INT_LEAST_MIN */
-
-#define EFINT_LEAST8_MIN 0x00
-#define EFINT_LEAST16_MIN 0x00
-#define EFINT_LEAST32_MIN 0x00
-#define EFINT_LEAST64_MIN 0x00
-
-/* >>INT_LEAST_MAX */
-
-#define EFINT_LEAST8_MAX 0x00
-#define EFINT_LEAST16_MAX 0x00
-#define EFINT_LEAST32_MAX 0x00
-#define EFINT_LEAST64_MAX 0x00
-
-/* >>UINT_LEAST_MAX */
-
-#define EFUINT_LEAST8_MAX 0x00
-#define EFUINT_LEAST16_MAX 0x00
-#define EFUINT_LEAST32_MAX 0x00
-#define EFUINT_LEAST64_MAX 0x00
-
-/* >>INT_FAST_MIN */
-
-/* >>INT_FAST_MAX */
-
-/* >>UINT_FAST_MAX */
+/*************************************/
+/* >>ISO/IEC 9899:1999 §7.18.2.4, ¶1 */
+/*************************************/
 
 /* >>INTPTR_MIN */
 
+#ifdef __INTPTR_MAX__
+#define INTPTR_MIN -(__INTPTR_MAX__ - 0x01)
+#else
+#define INTPTR_MIN INT_LEAST16_MIN
+#endif
+
 /* >>INTPTR_MAX */
+
+#ifdef __INTPTR_MAX__
+#define INTPTR_MAX __INTPTR_MAX__
+#else
+#define INTPTR_MAX INT_LEAST16_MAX
+#endif
 
 /* >>UINTPTR_MAX */
 
+#ifdef __UINTPTR_MAX__
+#define UINTPTR_MAX __UINTPTR_MAX__
+#else
+#define UINTPTR_MAX UINT_LEAST16_MAX
+#endif
+
+/*************************************/
+/* >>ISO/IEC 9899:1999 §7.18.2.5, ¶1 */
+/*************************************/
+
 /* >>INTMAX_MIN */
+
+#ifdef __INTMAX_MAX__
+#define INTMAX_MIN (-__INTMAX_MAX__ - 0x01)
+#else
+#define INTMAX_MIN INT_LEAST64_MIN
+#endif
 
 /* >>INTMAX_MAX */
 
+#ifdef __INTMAX_MAX__
+#define INTMAX_MAX __INTMAX_MAX__
+#else
+#define INTMAX_MAX INT_LEAST64_MAX
+#endif
+
 /* >>UINTMAX_MAX */
 
-/* todo: SIZE_MAX? efnlibc doesn't define it, but eflibc does, if SIZE_MAX isn't defined elsewhere, define here */
-
-/* >>INT_C */
-
-#ifdef EFINT_LEAST8
-#ifdef EFINT8_C_SUFFIX
-#define EFINT8_C(value) EFINT_C(value, EFINT8_C_SUFFIX)
+#ifdef __UINTMAX_MAX__
+#define UINTMAX __UINTMAX_MAX__
 #else
-#define EFINT8_C(value) value
-#endif
+#define UINTMAX_MAX UINT_LEAST64_MAX
 #endif
 
-/* >>UINT_C */
+/***********************************/
+/* >>ISO/IEC 9899:1999 §7.18.3, ¶2 */
+/***********************************/
 
-#ifdef EFUINT_LEAST8
-#ifdef EFINT8_C_SUFFIX
-#define EFUINT8_C(value) EFUINT_C(value, EFINT8_C_SUFFIX)
+/* >>PTRDIFF_MIN */
+/* >>PTRDIFF_MAX */
+/* >>SIG_ATOMIC_MIN */
+/* >>SIG_ATOMIC_MAX */
+/* >>SIZE_MAX */
+/* >>WCHAR_MIN */
+/* >>WCHAR_MAX */
+/* >>WINT_MIN */
+/* >>WINT_MAX */
+
+/*************************************/
+/* >>ISO/IEC 9899:1999 §7.18.4.1, ¶1 */
+/*************************************/
+
+/* >>INTN_C */
+
+#ifdef __INT8_C_SUFFIX__
+#define INT8_C(value) _INT_C(value, __INT8_C_SUFFIX__)
 #else
-#define EFUINT8_C(value) value
+#define INT8_C(value) value
 #endif
+
+#ifdef __INT16_C_SUFFIX__
+#define INT16_C(value) _INT_C(value, __INT16_C_SUFFIX__)
+#else
+#define INT16_C(value) value
 #endif
+
+#ifdef __INT32_C_SUFFIX__
+#define INT32_C(value) _INT_C(value, __INT32_C_SUFFIX__)
+#else
+#define INT32_C(value) value
+#endif
+
+#ifdef __INT64_C_SUFFIX__
+#define INT64_C(value) _INT_C(value, __INT64_C_SUFFIX__)
+#else
+#define INT64_C(value) value
+#endif
+
+/* >>UINTN_C */
+
+#ifdef __INT8_C_SUFFIX__
+#define UINT8_C(value) _UINT_C(value, __INT8_C_SUFFIX__)
+#else
+#define UINT8_C(value) _INT_C_JOIN(value, U)
+#endif
+
+#ifdef __INT16_C_SUFFIX__
+#define UINT16_C(value) _UINT_C(value, __INT16_C_SUFFIX__)
+#else
+#define UINT16_C(value) _INT_C_JOIN(value, U)
+#endif
+
+#ifdef __INT32_C_SUFFIX__
+#define UINT32_C(value) _UINT_C(value, __INT32_C_SUFFIX__)
+#else
+#define UINT32_C(value) _INT_C_JOIN(value, U)
+#endif
+
+#ifdef __INT64_C_SUFFIX__
+#define UINT64_C(value) _UINT_C(value, __INT64_C_SUFFIX__)
+#else
+#define UINT64_C(value) _INT_C_JOIN(value, U)
+#endif
+
+/*************************************/
+/* >>ISO/IEC 9899:1999 §7.18.4.2, ¶1 */
+/*************************************/
 
 /* >>INTMAX_C */
 
-/* >>UINTMAX_C */
-
-/* >>shutdown */
-#undef EFEVERYTHING
-
+#ifdef __INTMAX_C_SUFFIX__
+#define INTMAX_C(value) _INT_C(value, __INTMAX_C_SUFFIX__)
+#else
+#define INTMAX_C(value) value
 #endif
 
+/* >>UINTMAX_C */
+
+#ifdef __UINTMAX_C_SUFFIX__
+#define UINTMAX_C(value) _UINT_C(value, __UINTMAX_C_SUFFIX__)
+#else
+#define UINTMAX_C(value) _INT_C_JOIN(value, U)
+#endif
+
+#endif
