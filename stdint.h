@@ -1,7 +1,5 @@
-/* Copyright 2024 Efgeen */
-
-#ifndef _EFSTDINT_H
-#define _EFSTDINT_H
+#ifndef _STDINT_H
+#define _STDINT_H
 
 #define _INT_C_JOIN(a, b) a ## b
 #define _INT_C(value, suffix) _INT_C_JOIN(value, suffix)
