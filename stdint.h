@@ -1,13 +1,9 @@
-#ifndef _STDINT_H
-#define _STDINT_H
+#ifndef _EFSTDINT_H
+#define _EFSTDINT_H
 
 #define _INT_C_JOIN(a, b) a ## b
 #define _INT_C(value, suffix) _INT_C_JOIN(value, suffix)
 #define _UINT_C(value, suffix) _INT_C_JOIN(value ## U, suffix)
-
-/*****************************************/
-/* >>ISO/IEC 9899:1999 §7.18.1.1, ¶1, ¶3 */
-/*****************************************/
 
 /* >>intN_t */
 
@@ -27,10 +23,6 @@ typedef __INT32_TYPE__ int32_t;
 typedef __INT64_TYPE__ int64_t;
 #endif
 
-/*****************************************/
-/* >>ISO/IEC 9899:1999 §7.18.1.1, ¶2, ¶3 */
-/*****************************************/
-
 /* >>uintN_t */
 
 #ifdef __UINT8_TYPE__
@@ -49,93 +41,105 @@ typedef __UINT32_TYPE__ uint32_t;
 typedef __UINT64_TYPE__ uint64_t;
 #endif
 
-/*****************************************/
-/* >>ISO/IEC 9899:1999 §7.18.1.2, ¶1, ¶3 */
-/*****************************************/
-
 /* >>int_leastN_t */
 
 #ifdef __UINT8_TYPE__
 typedef __UINT8_TYPE__ int_least8_t;
-#elif defined __INT16_TYPE__
+#else
+#ifdef __INT16_TYPE__
 typedef __INT16_TYPE__ int_least8_t;
-#elif defined __INT32_TYPE__
+#else
+#ifdef __INT32_TYPE__
 typedef __INT32_TYPE__ int_least8_t;
-#elif defined __INT64_TYPE__
+#else
+#ifdef __INT64_TYPE__
 typedef __INT64_TYPE__ int_least8_t;
 #else
 typedef signed char int_least8_t;
 #endif
+#endif
+#endif
+#endif
 
 #ifdef __INT16_TYPE__
 typedef __INT16_TYPE__ int_least16_t;
-#elif defined __INT32_TYPE__
+#else
+#ifdef __INT32_TYPE__
 typedef __INT32_TYPE__ int_least16_t;
-#elif defined __INT64_TYPE__
+#else
+#ifdef __INT64_TYPE__
 typedef __INT64_TYPE__ int_least16_t;
 #else
-typedef short int_least16_t;
+typedef signed short int_least16_t;
+#endif
+#endif
 #endif
 
 #ifdef __INT32_TYPE__
 typedef __INT32_TYPE__ int_least32_t;
-#elif defined __INT64_TYPE__
+#else
+#ifdef __INT64_TYPE__
 typedef __INT64_TYPE__ int_least32_t;
 #else
-typedef long int_least32_t;
+typedef signed long int_least32_t;
+#endif
 #endif
 
 #ifdef __INT64_TYPE__
 typedef __INT64_TYPE__ int_least64_t;
 #else
-typedef long long int_least64_t;
+typedef int_least32_t int_least64_t[0x02];
 #endif
-
-/*****************************************/
-/* >>ISO/IEC 9899:1999 §7.18.1.2, ¶2, ¶3 */
-/*****************************************/
 
 /* >>uint_leastN_t */
 
 #ifdef __UINT8_TYPE__
 typedef __UINT8_TYPE__ uint_least8_t;
-#elif defined __UINT16_TYPE__
+#else
+#ifdef __UINT16_TYPE__
 typedef __UINT16_TYPE__ uint_least8_t;
-#elif defined __UINT32_TYPE__
+#else
+#ifdef __UINT32_TYPE__
 typedef __UINT32_TYPE__ uint_least8_t;
-#elif defined __UINT64_TYPE__
+#else
+#ifdef __UINT64_TYPE__
 typedef __UINT64_TYPE__ uint_least8_t;
 #else
 typedef unsigned char uint_least8_t;
 #endif
+#endif
+#endif
+#endif
 
 #ifdef __UINT16_TYPE__
 typedef __UINT16_TYPE__ uint_least16_t;
-#elif defined __UINT32_TYPE__
+#else
+#ifdef __UINT32_TYPE__
 typedef __UINT32_TYPE__ uint_least16_t;
-#elif defined __UINT64_TYPE__
+#else
+#ifdef __UINT64_TYPE__
 typedef __UINT64_TYPE__ uint_least16_t;
 #else
 typedef unsigned short uint_least16_t;
 #endif
+#endif
+#endif
 
 #ifdef __UINT32_TYPE__
 typedef __UINT32_TYPE__ uint_least32_t;
-#elif defined __UINT64_TYPE__
+#else
+#ifdef __UINT64_TYPE__
 typedef __UINT64_TYPE__ uint_least32_t;
 #else
 typedef unsigned long uint_least32_t;
+#endif
 #endif
 
 #ifdef __UINT64_TYPE__
 typedef __UINT64_TYPE__ uint_least64_t;
 #else
-typedef unsigned long long uint_least64_t;
+typedef uint_least32_t uint_least64_t[0x02];
 #endif
-
-/*****************************************/
-/* >>ISO/IEC 9899:1999 §7.18.1.3, ¶2, ¶3 */
-/*****************************************/
 
 /* >>int_leastN_t */
 
@@ -151,10 +155,6 @@ typedef uint_least16_t uint_fast16_t;
 typedef uint_least32_t uint_fast32_t;
 typedef uint_least64_t uint_fast64_t;
 
-/*************************************/
-/* >>ISO/IEC 9899:1999 §7.18.1.4, ¶1 */
-/*************************************/
-
 /* >>intptr_t */
 
 #ifdef __INTPTR_TYPE__
@@ -166,10 +166,6 @@ typedef __INTPTR_TYPE__ intptr_t;
 #ifdef __UINTPTR_TYPE__
 typedef __UINTPTR_TYPE__ uintptr_t;
 #endif
-
-/*************************************/
-/* >>ISO/IEC 9899:1999 §7.18.1.5, ¶1 */
-/*************************************/
 
 /* >>intmax_t */
 
@@ -186,10 +182,6 @@ typedef __UINTMAX_TYPE__ uintmax_t;
 #else
 typedef int_least64_t uintmax_t;
 #endif
-
-/*************************************/
-/* >>ISO/IEC 9899:1999 §7.18.2.1, ¶1 */
-/*************************************/
 
 /* >>INTN_MIN */
 
@@ -268,10 +260,6 @@ typedef int_least64_t uintmax_t;
 #else
 #define UINT64_MAX _INT_C_JOIN(0xFFFFFFFFFFFFFFFF, U)
 #endif
-
-/*************************************/
-/* >>ISO/IEC 9899:1999 §7.18.2.2, ¶1 */
-/*************************************/
 
 /* >>INT_LEASTN_MIN */
 
@@ -379,10 +367,6 @@ typedef int_least64_t uintmax_t;
 
 #define UINT_LEAST64_MAX UINT64_MAX
 
-/*************************************/
-/* >>ISO/IEC 9899:1999 §7.18.2.3, ¶1 */
-/*************************************/
-
 /* >>INT_FASTN_MIN */
 
 #define INT_FAST8_MIN INT_LEAST8_MIN
@@ -403,10 +387,6 @@ typedef int_least64_t uintmax_t;
 #define UINT_FAST16_MAX UINT_LEAST16_MAX
 #define UINT_FAST32_MAX UINT_LEAST32_MAX
 #define UINT_FAST64_MAX UINT_LEAST64_MAX
-
-/*************************************/
-/* >>ISO/IEC 9899:1999 §7.18.2.4, ¶1 */
-/*************************************/
 
 /* >>INTPTR_MIN */
 
@@ -432,10 +412,6 @@ typedef int_least64_t uintmax_t;
 #define UINTPTR_MAX UINT_LEAST16_MAX
 #endif
 
-/*************************************/
-/* >>ISO/IEC 9899:1999 §7.18.2.5, ¶1 */
-/*************************************/
-
 /* >>INTMAX_MIN */
 
 #ifdef __INTMAX_MAX__
@@ -459,10 +435,7 @@ typedef int_least64_t uintmax_t;
 #else
 #define UINTMAX_MAX UINT_LEAST64_MAX
 #endif
-
-/***********************************/
-/* >>ISO/IEC 9899:1999 §7.18.3, ¶2 */
-/***********************************/
+************************/
 
 /* >>PTRDIFF_MIN */
 /* >>PTRDIFF_MAX */
@@ -473,10 +446,6 @@ typedef int_least64_t uintmax_t;
 /* >>WCHAR_MAX */
 /* >>WINT_MIN */
 /* >>WINT_MAX */
-
-/*************************************/
-/* >>ISO/IEC 9899:1999 §7.18.4.1, ¶1 */
-/*************************************/
 
 /* >>INTN_C */
 
@@ -529,10 +498,6 @@ typedef int_least64_t uintmax_t;
 #else
 #define UINT64_C(value) _INT_C_JOIN(value, U)
 #endif
-
-/*************************************/
-/* >>ISO/IEC 9899:1999 §7.18.4.2, ¶1 */
-/*************************************/
 
 /* >>INTMAX_C */
 
