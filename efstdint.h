@@ -1,5 +1,5 @@
-#ifndef _EFSTDINT_H
-#define _EFSTDINT_H
+#ifndef _EFNLIBC_EFSTDINT_H
+#define _EFNLIBC_EFSTDINT_H
 
 #define _INT_C_JOIN(a, b) a ## b
 #define _INT_C(value, suffix) _INT_C_JOIN(value, suffix)
@@ -435,7 +435,6 @@ typedef int_least64_t uintmax_t;
 #else
 #define UINTMAX_MAX UINT_LEAST64_MAX
 #endif
-************************/
 
 /* >>PTRDIFF_MIN */
 /* >>PTRDIFF_MAX */
