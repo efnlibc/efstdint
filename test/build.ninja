@@ -1,8 +1,0 @@
-clang_flags = $
-    @compile_flags.txt
-
-rule clang
-    command = clang $clang_flags -o $out $in
-
-build bin/test: clang test.c
-
